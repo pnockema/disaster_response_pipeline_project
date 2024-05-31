@@ -15,6 +15,7 @@ This disaster response pipeline's purpose is to support organisations that are i
         - disaster_categories.csv
         - disaster_messages.csv
         - disaster.db
+        - DisasterResponse.db
         - ETL Pipeline Preparation.ipynb
         - ML Pipeline Preparation.ipynb
         - process_data.py
@@ -24,17 +25,19 @@ This disaster response pipeline's purpose is to support organisations that are i
 
 #### File descriptions:
 - run.py, go.html, master.html:
-    These files setup the layout and visualisations of the web app
+    - These files setup the layout and visualisations of the web app
 - disaster_categories.csv, disaster_messages.csv:
-    Data files containing disaster messages and corresponding categories
-- disaster.db
-    .db-file containing prepared data after ETL process.
+    - Data files containing disaster messages and corresponding categories
+- disaster.db:
+    - test-.db-file containing prepared data after ETL process from Jupyter Notebook
+- DisasterResponse.db:
+    - db-file containing prepared data after ETL process from process_data.py
 - ETL Pipeline Preparation.ipynb, ML Pipeline Preparation.ipynb:
-    Jupyter Notebooks containing my personal exploration on ETL and ML process
+    - Jupyter Notebooks containing my personal exploration on ETL and ML process
 - process_data.py:
-    Python file containing functions that set up ETL pipeline
+    - Python file containing functions that set up ETL pipeline
 - train_classifier.py:
-    Python file containing functions for NLP and ML pipelines
+    - Python file containing functions for NLP and ML pipelines
 
 ### Instructions
 1. Run the following commands in the project's root directory to set up your database and model.

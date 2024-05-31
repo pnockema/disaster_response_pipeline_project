@@ -22,13 +22,12 @@ import pickle
 
 def load_data(database_filepath):
     '''
-    Load data from database
+    Load data from database.
 
-    Input 
+    Input: 
+    database_filepath: sql database filepath
 
-    sql database filepath
-
-    Output
+    Output:
     X: Feature variable for ML model
     Y: Target variable for ML model
     '''
@@ -40,6 +39,15 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    '''
+    Tokenize text as NLP preparation.
+
+    Input:
+    text: Text string of any length
+
+    Output:
+    clean_tokens: lemmatized and case normalized text tokens
+    '''
     # tokenize text
     tokens = word_tokenize(text)
     
@@ -57,6 +65,13 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    Build machine learning model
+
+    Input: None
+
+    Output: GridsearchCV-function of Machine Learning pipeline.
+    '''
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize, token_pattern=None)),
         ('tfidf', TfidfTransformer()),
@@ -75,6 +90,18 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    Print evaluation of ML model
+
+    Input:
+    model: ML model from build_model but after fitting
+    X_test: test input data from train-test-split
+    Y_test: test output data from train-test-split
+    category_names: Category names to show classification report for
+
+    Output:
+    None
+    '''
     Y_pred = pd.DataFrame(model.predict(X_test), columns=category_names)
     for col in Y_pred.columns:
         print(col)
@@ -84,6 +111,16 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    '''
+    Save ML model to pickle file
+
+    Input:
+    model: trained model from build_model
+    model_filepath
+
+    Output:
+    None
+    '''
     pickle.dump(model, open(model_filepath, 'wb'))
     pass
 

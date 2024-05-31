@@ -61,12 +61,25 @@ def clean_data(df):
     # drop duplicates
     df = df.drop_duplicates()
 
+    # drop rows where related category equals 2
+    df.drop(index = df[df['related'] == 2].index, inplace = True)
+
     return df
 
 
 def save_data(df, database_filename):
-    engine = create_engine(database_filename)
-    df.to_sql('disaster_messages', engine, index=False)
+    '''
+    Save cleaned df to database from clean_data.
+
+    Input:
+    df: Cleaned pandas DataFrame from load_data function
+    database_filename: Costum filename for database
+
+    Output:
+    None
+    '''
+    engine = create_engine('sqlite:///', + database_filename)
+    df.to_sql('disaster_messages', engine, index=False, if_exists='replace')
     pass  
 
 
